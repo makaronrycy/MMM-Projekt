@@ -4,6 +4,7 @@ from enum import Enum
 class InputSignal(Enum):
     SQUARE = 1
     SINUS = 2
+    TRIANGLE = 3
 
 class Config:
     def __init__(self):

@@ -49,17 +49,17 @@ def main():
             print("6. d0:" + str(program_config.d0))
             choice = int(input())
             if (choice == 1):
-                program_config.c2 = int(input("Nowa wartość dla a1 (aktualna =" + str(program_config.c2) + "): "))
+                program_config.c2 = int(input("Nowa wartość dla c2 (aktualna =" + str(program_config.c2) + "): "))
             elif (choice == 2):
-                program_config.c1 = int(input("Nowa wartość dla a0 (aktualna =" + str(program_config.c1) + "): "))
+                program_config.c1 = int(input("Nowa wartość dla c1 (aktualna =" + str(program_config.c1) + "): "))
             elif (choice == 3):
-                program_config.c0 = int(input("Nowa wartość dla b2 (aktualna =" + str(program_config.c0) + "): "))
+                program_config.c0 = int(input("Nowa wartość dla c0 (aktualna =" + str(program_config.c0) + "): "))
             elif (choice == 4):
-                program_config.d2 = int(input("Nowa wartość dla b1 (aktualna =" + str(program_config.d2) + "): "))
+                program_config.d2 = int(input("Nowa wartość dla d2 (aktualna =" + str(program_config.d2) + "): "))
             elif (choice == 5):
-                program_config.d1 = int(input("Nowa wartość dla b0 (aktualna =" + str(program_config.d1) + "): "))
+                program_config.d1 = int(input("Nowa wartość dla d1 (aktualna =" + str(program_config.d1) + "): "))
             elif (choice == 6):
-                program_config.d0 = int(input("Nowa wartość dla b0 (aktualna =" + str(program_config.d0) + "): "))
+                program_config.d0 = int(input("Nowa wartość dla d0 (aktualna =" + str(program_config.d0) + "): "))
             else:
                 print("Niepoprawna składnia wyboru!")
             clear()
@@ -68,11 +68,14 @@ def main():
             print("Wybierz funkcje wejściową jaką chciałbyś wybrać (aktualna =" + str(program_config.input) +")")
             print("1. impuls jednostkowy")
             print("2. sinus")
+            print("3. trójkątny")
             choice = int(input())
             if (choice == 1):
                 program_config.input = InputSignal.SQUARE
             elif (choice == 2):
                 program_config.input = InputSignal.SINUS
+            elif (choice == 3):
+                program_config.input = InputSignal.TRIANGLE
             else:
                 print("Niepoprawna składnia wyboru!")
             clear()

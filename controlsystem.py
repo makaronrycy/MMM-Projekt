@@ -26,14 +26,17 @@ class controlSystem:
 
         us = []
         uf = []
+        ut = []
         w = cfg.getFrequency()
         total = cfg.getNumberOfSamples()
         self.u = []
         for i in range(0, total):
-            us.append(cfg.M * np.sin(w * i * cfg.h))
-            uf.append(cfg.M if us[i] > 0 else 0)
+            us.append(cfg.M * np.sin(w * i * cfg.h)) #sinus
+            uf.append(cfg.M if us[i] > 0 else 0) #square
+            ut.append(4*self.cfg.M/cfg.L*np.abs(((i*cfg.h-(self.cfg.L/4))%self.cfg.L)-self.cfg.L/2) - self.cfg.M)
         if(cfg.input == InputSignal.SQUARE): self.u = uf
         elif(cfg.input == InputSignal.SINUS): self.u = us
+        elif (cfg.input == InputSignal.TRIANGLE): self.u = ut
         self.output = []
 
 
@@ -62,7 +65,9 @@ class controlSystem:
             Bu = np.multiply(B,self.u[i])
             Cx = np.dot(C,xi_1)
             Du = np.multiply(D,self.u[i])
-            xi = xi_1+self.cfg.h*(Ax+Bu)
+            xi = Ax+Bu
+            xi = xi*self.cfg.h
+            xi = xi_1+xi
             xi_1 = xi
             self.output.append(Cx+Du)
             if(self.output[i] > max_y): max_y = self.output[i]
